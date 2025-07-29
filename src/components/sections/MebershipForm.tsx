@@ -38,13 +38,12 @@ import {
   UserCheck,
 } from 'lucide-react'
 
-// Import the Nigerian states and LGAs data
+
 import nigerianStatesAndLGAs from '@/lib/nigerian-states-lgas.json'
 import { addMember } from '@/app/(frontend)/serverActions/membership/action'
 
 export default function MembershipForm() {
-  const primaryColor = '#AF7C0F'
-  const secondaryColor = '#331401'
+
 
   const MEMBERSHIP_FEE = 200 // Example fee in NGN
 

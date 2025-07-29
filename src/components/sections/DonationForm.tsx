@@ -25,7 +25,14 @@ import {
   Repeat,
 } from 'lucide-react'
 import { addDonation } from '@/app/(frontend)/serverActions/donation/action'
-import { usePaystackPayment } from 'react-paystack'
+import dynamic from 'next/dynamic'
+
+const PaystackPayment = dynamic(() => import('./PaystackPayment'), {
+  ssr: false,
+  loading: () => <span>Loading payment...</span>
+})
+
+
 
 export default function DonationForm() {
   const [fullName, setFullName] = useState('')
@@ -115,104 +122,44 @@ export default function DonationForm() {
     }
   }, [state])
 
-  // Paystack configuration
-  const paystackConfig = {
-    reference: new Date().getTime().toString(),
-    email: email,
-    amount: getDonationAmount() * 100,
-    publicKey,
-    currency: 'NGN',
-    metadata: {
-      custom_fields: [
-        {
-          display_name: 'Full Name',
-          variable_name: 'full_name',
-          value: fullName,
-        },
-        {
-          display_name: 'Selected Program',
-          variable_name: 'selected_program',
-          value: selectedProgram,
-        },
-        {
-          display_name: 'Donation Type',
-          variable_name: 'donation_type',
-          value: donationType,
-        },
-        {
-          display_name: 'Stay Informed',
-          variable_name: 'stay_informed',
-          value: stayInformed ? 'Yes' : 'No',
-        },
-        {
-          display_name: 'Volunteer Interest',
-          variable_name: 'volunteer_interest',
-          value: volunteerInterest ? 'Yes' : 'No',
-        },
-      ],
-    },
-  }
+  
 
-  // Initialize Paystack hook
-  const initializePayment = usePaystackPayment(paystackConfig)
 
-  const onSuccess = (response: any) => {
-    console.log('Paystack Success:', response)
-
-    if (!response || !response.reference) {
-      console.error('No reference received from Paystack')
-      return
-    }
-
+  const handlePaystackSuccess = (reference: string) => {
     const formData = new FormData()
     formData.append('fullName', fullName)
     formData.append('email', email)
     formData.append('amount', getDonationAmount().toString())
-    formData.append('paystackReference', response.reference)
+    formData.append('paystackReference', reference)
     formData.append('paymentMethod', 'paystack')
     formData.append('program', selectedProgram)
     formData.append('donationType', donationType)
     formData.append('stayInformed', stayInformed ? 'true' : 'false')
     formData.append('volunteerInterest', volunteerInterest ? 'true' : 'false')
 
-    // Use startTransition to properly handle the async call
     startTransition(() => {
       formAction(formData)
     })
   }
+  
 
-  const onClose = () => {
-    console.log('Paystack Closed.')
+   const handlePaystackClose = () => {
+    console.log('Paystack payment closed')
   }
 
-  const handleFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    const handleFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
     const amountToDonate = getDonationAmount()
     if (!fullName || !email || amountToDonate <= 0 || isNaN(amountToDonate)) {
-      // For validation errors, we can call formAction directly since it's in form submission
       return formAction(new FormData(event.currentTarget))
     }
 
-    if (paymentMethod === 'paystack') {
-      if (!publicKey) {
-        alert('Paystack public key is not configured. Please contact support.')
-        return
-      }
-
-      try {
-        initializePayment({
-          onSuccess,
-          onClose,
-        })
-      } catch (error) {
-        console.error('Paystack initialization error:', error)
-        alert('Payment initialization failed. Please try again.')
-      }
-    } else {
-      // For 'test' and 'offline' methods, proceed with direct server action submission
+   
+    if (paymentMethod !== 'paystack') {
       formAction(new FormData(event.currentTarget))
     }
+    // For Paystack, the PaystackPayment component will handle the submission
   }
 
   // Combine both pending states for UI
@@ -485,23 +432,47 @@ export default function DonationForm() {
                 )}
 
                 {/* Submit Button */}
-                <Button
-                  type="submit"
-                  className="w-full py-4 text-lg font-semibold flex items-center justify-center space-x-2"
-                  style={{ backgroundColor: primaryColor, color: 'white' }}
-                  disabled={isFormPending}
-                >
-                  <span>
-                    {isFormPending
-                      ? 'Processing...'
-                      : paymentMethod === 'monthly'
-                        ? 'Start Monthly Donation'
-                        : paymentMethod === 'paystack'
-                          ? 'Pay with Paystack'
+                {paymentMethod === 'paystack' ? (
+                  <PaystackPayment
+                    amount={getDonationAmount()}
+                    email={email}
+                    fullName={fullName}
+                    selectedProgram={selectedProgram}
+                    donationType={donationType}
+                    stayInformed={stayInformed}
+                    volunteerInterest={volunteerInterest}
+                    onSuccess={handlePaystackSuccess}
+                    onClose={handlePaystackClose}
+                  >
+                    <Button
+                      type="button"
+                      className="w-full py-4 text-lg font-semibold flex items-center justify-center space-x-2"
+                      style={{ backgroundColor: primaryColor, color: 'white' }}
+                      disabled={isFormPending}
+                    >
+                      <span>
+                        {isFormPending ? 'Processing...' : 'Pay with Paystack'}
+                      </span>
+                      <ArrowRight size={20} />
+                    </Button>
+                  </PaystackPayment>
+                ) : (
+                  <Button
+                    type="submit"
+                    className="w-full py-4 text-lg font-semibold flex items-center justify-center space-x-2"
+                    style={{ backgroundColor: primaryColor, color: 'white' }}
+                    disabled={isFormPending}
+                  >
+                    <span>
+                      {isFormPending
+                        ? 'Processing...'
+                        : donationType === 'monthly'
+                          ? 'Start Monthly Donation'
                           : 'Donate Now'}
-                  </span>
-                  <ArrowRight size={20} />
-                </Button>
+                    </span>
+                    <ArrowRight size={20} />
+                  </Button>
+                )}
               </form>
             </CardContent>
           </Card>

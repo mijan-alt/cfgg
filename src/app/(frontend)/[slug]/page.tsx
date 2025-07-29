@@ -14,19 +14,13 @@ import WhoWeAre from '@/components/sections/WhoWeAre'
 import ImpactSection from '@/components/sections/ImpactSection'
 import CTASection from '@/components/sections/cta'
 import Commitment from '@/components/sections/Commitment'
-// import DonationForm from '@/components/sections/DonationForm'
-// import MembershipForm from '@/components/sections/MebershipForm'
-import dynamic from 'next/dynamic'
+import DonationForm from '@/components/sections/DonationForm'
+import MembershipForm from '@/components/sections/MebershipForm'
 
-const DonationForm = dynamic(() => import('@/components/sections/DonationForm'), {
-  ssr: true,
-  
-})
 
-const MembershipForm= dynamic(() => import('@/components/sections/MebershipForm'), {
-  ssr: true,
-  
-})
+
+
+
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
