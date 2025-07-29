@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { useState, useActionState, useTransition } from 'react'
+import { useState, useActionState, useTransition, useEffect } from 'react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
@@ -37,16 +37,24 @@ export default function DonationForm() {
   const [selectedProgram, setSelectedProgram] = useState('general')
   const [stayInformed, setStayInformed] = useState(false)
   const [volunteerInterest, setVolunteerInterest] = useState(false)
+  
+  // ✅ Add state to track if component is mounted (client-side)
+  const [isMounted, setIsMounted] = useState(false)
+  const [publicKey, setPublicKey] = useState<string>('')
 
   // Add useTransition for handling async calls outside form submission
   const [isPendingTransition, startTransition] = useTransition()
-
-  const publicKey = process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY!
 
   const primaryColor = '#AF7C0F'
   const secondaryColor = '#331401'
 
   const [state, formAction, isPending] = useActionState(addDonation, null)
+
+  // ✅ Use useEffect to safely access environment variables and window object
+  useEffect(() => {
+    setIsMounted(true)
+    setPublicKey(process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY || '')
+  }, [])
 
   const programs = [
     {
@@ -115,13 +123,13 @@ export default function DonationForm() {
     }
   }, [state])
 
-  // Paystack configuration
-  const paystackConfig = {
+  // ✅ Only create paystack config if component is mounted and we have publicKey
+  const paystackConfig = isMounted ? {
     reference: new Date().getTime().toString(),
     email: email,
     amount: getDonationAmount() * 100,
     publicKey,
-    currency: 'NGN',
+    currency: 'NGN' as const,
     metadata: {
       custom_fields: [
         {
@@ -151,10 +159,16 @@ export default function DonationForm() {
         },
       ],
     },
-  }
+  } : null
 
-  // Initialize Paystack hook
-  const initializePayment = usePaystackPayment(paystackConfig)
+  // ✅ Only initialize Paystack hook if we have valid config
+  const initializePayment = usePaystackPayment(paystackConfig || {
+    reference: '',
+    email: '',
+    amount: 0,
+    publicKey: '',
+    currency: 'NGN' as const,
+  })
 
   const onSuccess = (response: any) => {
     console.log('Paystack Success:', response)
@@ -217,6 +231,20 @@ export default function DonationForm() {
 
   // Combine both pending states for UI
   const isFormPending = isPending || isPendingTransition
+
+  // ✅ Show loading state while component is mounting
+  if (!isMounted) {
+    return (
+      <section className="py-12 px-4 md:px-8 lg:px-16 max-w-7xl mx-auto">
+        <div className="text-center">
+          <div className="animate-pulse">
+            <div className="h-8 bg-gray-200 rounded w-1/2 mx-auto mb-4"></div>
+            <div className="h-4 bg-gray-200 rounded w-3/4 mx-auto"></div>
+          </div>
+        </div>
+      </section>
+    )
+  }
 
   return (
     <section className="py-12 px-4 md:px-8 lg:px-16 max-w-7xl mx-auto">
