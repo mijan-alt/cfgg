@@ -19,12 +19,12 @@ import Commitment from '@/components/sections/Commitment'
 import dynamic from 'next/dynamic'
 
 const DonationForm = dynamic(() => import('@/components/sections/DonationForm'), {
-  ssr: false,
+  ssr: true,
   
 })
 
 const MembershipForm= dynamic(() => import('@/components/sections/MebershipForm'), {
-  ssr: false,
+  ssr: true,
   
 })
 
