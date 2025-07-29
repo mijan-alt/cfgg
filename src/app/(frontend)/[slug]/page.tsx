@@ -1,18 +1,16 @@
 import type { Metadata } from 'next'
-
 import { PayloadRedirects } from '@/components/PayloadRedirects'
 import configPromise from '@payload-config'
 import { getPayload, type RequiredDataFromCollectionSlug } from 'payload'
 import { draftMode } from 'next/headers'
 import React, { cache } from 'react'
 import { homeStatic } from '@/endpoints/seed/home-static'
-
 import { RenderBlocks } from '@/blocks/RenderBlocks'
 import { RenderHero } from '@/heros/RenderHero'
 import { generateMeta } from '@/utilities/generateMeta'
 import PageClient from './page.client'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
-import WhoWeAre from '@/blocks/WhoWeAre/Component'
+import WhoWeAre from '@/components/sections/WhoWeAre'
 import ImpactSection from '@/components/sections/ImpactSection'
 import CTASection from '@/components/sections/cta'
 import Commitment from '@/components/sections/Commitment'
@@ -112,7 +110,9 @@ export default async function Page({ params: paramsPromise }: Args) {
           </>
   
       )}
-      <RenderBlocks blocks={layout} />
+    {layout && Array.isArray(layout) && layout.length > 0 && (
+       <RenderBlocks blocks={layout} />
+    )}
     </article>
   )
 }

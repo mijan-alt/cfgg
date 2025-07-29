@@ -199,17 +199,7 @@ export interface Page {
       | null;
     media?: (number | null) | Media;
   };
-  layout?:
-    | (
-        | CallToActionBlock
-        | ContentBlock
-        | MediaBlock
-        | ArchiveBlock
-        | FormBlock
-        | WhoWeAreBlock
-        | MissionAndVisionBlock
-      )[]
-    | null;
+  layout?: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock | MissionAndVisionBlock)[] | null;
   meta?: {
     title?: string | null;
     /**
@@ -754,42 +744,6 @@ export interface Form {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "WhoWeAreBlock".
- */
-export interface WhoWeAreBlock {
-  title: string;
-  image: number | Media;
-  description?: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
-  organizationName: string;
-  organizationDescription: string;
-  empowermentText: string;
-  features?:
-    | {
-        title: string;
-        description: string;
-        id?: string | null;
-      }[]
-    | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'whoWeAre';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "missionAndVisionBlock".
  */
 export interface MissionAndVisionBlock {
@@ -1182,7 +1136,6 @@ export interface PagesSelect<T extends boolean = true> {
         mediaBlock?: T | MediaBlockSelect<T>;
         archive?: T | ArchiveBlockSelect<T>;
         formBlock?: T | FormBlockSelect<T>;
-        whoWeAre?: T | WhoWeAreBlockSelect<T>;
         missionAndVision?: T | MissionAndVisionBlockSelect<T>;
       };
   meta?:
@@ -1280,27 +1233,6 @@ export interface FormBlockSelect<T extends boolean = true> {
   form?: T;
   enableIntro?: T;
   introContent?: T;
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "WhoWeAreBlock_select".
- */
-export interface WhoWeAreBlockSelect<T extends boolean = true> {
-  title?: T;
-  image?: T;
-  description?: T;
-  organizationName?: T;
-  organizationDescription?: T;
-  empowermentText?: T;
-  features?:
-    | T
-    | {
-        title?: T;
-        description?: T;
-        id?: T;
-      };
   id?: T;
   blockName?: T;
 }

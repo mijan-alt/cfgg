@@ -12,7 +12,6 @@ import { slugField } from '@/fields/slug'
 import { populatePublishedAt } from '../../hooks/populatePublishedAt'
 import { generatePreviewPath } from '../../utilities/generatePreviewPath'
 import { revalidateDelete, revalidatePage } from './hooks/revalidatePage'
-import { WhoWeAreBlock } from '@/blocks/WhoWeAre/config'
 import { missionAndVisionBlock } from '@/blocks/AlternatingBlock/config'
 import {
   MetaDescriptionField,
@@ -82,7 +81,6 @@ export const Pages: CollectionConfig<'pages'> = {
                 MediaBlock,
                 Archive,
                 FormBlock,
-                WhoWeAreBlock,
                 missionAndVisionBlock
               ],
               admin: {

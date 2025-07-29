@@ -5,8 +5,6 @@ import { Media } from '@/components/Media'
 
 
 
-const primaryColor = '#AF7C0F'
-
 
 export const MissionAndVision: React.FC<MissionAndVisionBlock>= (props) => {
 
