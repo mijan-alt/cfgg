@@ -12,6 +12,12 @@ import { RenderHero } from '@/heros/RenderHero'
 import { generateMeta } from '@/utilities/generateMeta'
 import PageClient from './page.client'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
+import WhoWeAre from '@/blocks/WhoWeAre/Component'
+import ImpactSection from '@/components/sections/ImpactSection'
+import CTASection from '@/components/sections/cta'
+import Commitment from '@/components/sections/Commitment'
+import DonationForm from '@/components/sections/DonationForm'
+import MembershipForm from '@/components/sections/MebershipForm'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
@@ -64,9 +70,13 @@ export default async function Page({ params: paramsPromise }: Args) {
   }
 
   const { hero, layout } = page
+  const isHomePage = slug === 'home'
+  const isAboutPage = slug ==="about"
+  const isDonation = slug === "donate"
+  const isMembership = slug === "membership"
 
   return (
-    <article className="pt-16 pb-24">
+    <article className="pb-24">
       <PageClient />
       {/* Allows redirects for valid pages too */}
       <PayloadRedirects disableNotFound url={url} />
@@ -74,6 +84,34 @@ export default async function Page({ params: paramsPromise }: Args) {
       {draft && <LivePreviewListener />}
 
       <RenderHero {...hero} />
+      
+      {/* Only render these sections on the home page */}
+      {isHomePage && (
+        <>
+          <WhoWeAre />
+          <ImpactSection />
+          <CTASection />
+        </>
+      )}
+
+      {isAboutPage && (
+          <>
+            <Commitment/>
+          </>
+      )}
+
+      {isDonation && (
+        <>
+           <DonationForm/>
+        </>
+      )}
+      
+      {isMembership && (
+          <>
+            <MembershipForm/>
+          </>
+  
+      )}
       <RenderBlocks blocks={layout} />
     </article>
   )

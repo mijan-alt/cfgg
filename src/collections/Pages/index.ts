@@ -12,7 +12,8 @@ import { slugField } from '@/fields/slug'
 import { populatePublishedAt } from '../../hooks/populatePublishedAt'
 import { generatePreviewPath } from '../../utilities/generatePreviewPath'
 import { revalidateDelete, revalidatePage } from './hooks/revalidatePage'
-
+import { WhoWeAreBlock } from '@/blocks/WhoWeAre/config'
+import { missionAndVisionBlock } from '@/blocks/AlternatingBlock/config'
 import {
   MetaDescriptionField,
   MetaImageField,
@@ -75,8 +76,15 @@ export const Pages: CollectionConfig<'pages'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock],
-              required: true,
+              blocks: [
+                CallToAction,
+                Content,
+                MediaBlock,
+                Archive,
+                FormBlock,
+                WhoWeAreBlock,
+                missionAndVisionBlock
+              ],
               admin: {
                 initCollapsed: true,
               },

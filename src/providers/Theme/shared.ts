@@ -1,17 +1,24 @@
+
 import type { Theme } from './types'
 
-export const themeLocalStorageKey = 'payload-theme'
+export const themeLocalStorageKey = 'theme'
 
-export const defaultTheme = 'light'
+// ✅ Change this to 'light' to default to white theme
+export const defaultTheme: Theme = 'light' // Changed from 'dark' to 'light'
 
 export const getImplicitPreference = (): Theme | null => {
-  const mediaQuery = '(prefers-color-scheme: dark)'
-  const mql = window.matchMedia(mediaQuery)
-  const hasImplicitPreference = typeof mql.matches === 'boolean'
-
-  if (hasImplicitPreference) {
-    return mql.matches ? 'dark' : 'light'
-  }
-
-  return null
+  // ✅ Force light theme instead of checking system preference
+  // Comment out or modify this function to always return 'light'
+  
+  // Old version that checks system preference:
+  // if (typeof window !== 'undefined' && window.matchMedia) {
+  //   const mq = window.matchMedia('(prefers-color-scheme: dark)')
+  //   if (mq.matches) {
+  //     return 'dark'
+  //   }
+  // }
+  // return 'light'
+  
+  // New version that forces light theme:
+  return 'light'
 }

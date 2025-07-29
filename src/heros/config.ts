@@ -53,6 +53,17 @@ export const hero: Field = {
       }),
       label: false,
     },
+    {
+      name: 'breadcrumbText',
+      type: 'text',
+      label: 'Breadcrumb Text',
+      defaultValue: 'Current Page',
+      admin: {
+        condition: (_, { type } = {}) => ['highImpact', 'mediumImpact'].includes(type),
+        description: 'Text displayed in the breadcrumb navigation (e.g., "About", "Contact", "Membership")',
+      },
+    },
+   
     linkGroup({
       overrides: {
         maxRows: 2,

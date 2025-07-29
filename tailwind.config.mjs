@@ -9,7 +9,7 @@ const config = {
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
   ],
-  darkMode: ['selector', '[data-theme="dark"]'],
+  darkMode: ['selector', '[data-theme="light"]'],
   plugins: [tailwindcssAnimate, typography],
   prefix: '',
   safelist: [
@@ -56,6 +56,8 @@ const config = {
         sm: 'calc(var(--radius) - 4px)',
       },
       colors: {
+        primary: '#AF7C0F',
+        secondary: '#331401',
         accent: {
           DEFAULT: 'hsl(var(--accent))',
           foreground: 'hsl(var(--accent-foreground))',
@@ -94,7 +96,7 @@ const config = {
         warning: 'hsl(var(--warning))',
       },
       fontFamily: {
-        mono: ['var(--font-geist-mono)'],
+        mono: ['var(--font-raleway)'],
         sans: ['var(--font-geist-sans)'],
       },
       keyframes: {
