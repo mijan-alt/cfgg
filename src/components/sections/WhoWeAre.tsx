@@ -19,7 +19,7 @@ export default function WhoWeAre() {
         {/* Image - Full Height */}
         <div className="rounded-lg overflow-hidden h-full">
           <Image
-            src="/media/globe.jpg"
+            src="/assets/globe.jpg"
             alt="Speaker at podium"
             width={600}
             height={600}
