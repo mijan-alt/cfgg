@@ -5,7 +5,7 @@ export default function CTASection() {
     <section className="relative w-full py-12 overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0">
-        <Image src="/media/cta.png" alt="Hands coming together" fill className="object-cover" priority />
+        <Image src="/assets/cta.png" alt="Hands coming together" fill className="object-cover" priority />
         {/* Dark overlay for better text readability */}
         <div className="absolute inset-0 bg-black/40" />
       </div>

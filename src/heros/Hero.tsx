@@ -13,7 +13,7 @@ const HeroSection: React.FC = () => {
         loop
         playsInline
       >
-        <source src="/media/africa.mp4" type="video/mp4" />
+        <source src="/assets/africa.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
