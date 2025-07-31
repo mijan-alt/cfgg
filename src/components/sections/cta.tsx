@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Link from "next/link"
 
 export default function CTASection() {
   return (
@@ -22,17 +23,20 @@ export default function CTASection() {
         {/* Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 w-full max-w-2xl justify-center">
           {/* Become a member - Primary button with #AF7C0F */}
-          <button
+          <Link href={'/membership'}>
+           <button
             className="px-4 py-3 rounded-full  text-nowrap text-white transition-all duration-300 hover:opacity-90 hover:scale-105 cursor-pointer"
             style={{ backgroundColor: "#AF7C0F" }}
           >
             Become a member
           </button>
+          </Link>
+         
 
        
 
-          {/* Support our Cause - Outline button with #AF7C0F border */}
-          <button
+          <Link href={'/donate'}>
+           <button
             className="px-4 py-3 rounded-full text-nowrap  text-white border-2 transition-all duration-300 hover:scale-105 cursor-pointer"
             style={{
               borderColor: "#AF7C0F",
@@ -41,6 +45,8 @@ export default function CTASection() {
           >
             Support our Cause
           </button>
+          </Link>
+         
         </div>
       </div>
     </section>

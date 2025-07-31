@@ -1751,7 +1751,8 @@ export interface Header {
  */
 export interface Footer {
   id: number;
-  navItems?:
+  description: string;
+  quickLinks?:
     | {
         link: {
           type?: ('reference' | 'custom') | null;
@@ -1771,6 +1772,17 @@ export interface Footer {
         id?: string | null;
       }[]
     | null;
+  contact: {
+    email: string;
+    phone: string;
+    address: string;
+  };
+  socialLinks?: {
+    facebook?: string | null;
+    twitter?: string | null;
+    instagram?: string | null;
+    linkedin?: string | null;
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -1802,7 +1814,8 @@ export interface HeaderSelect<T extends boolean = true> {
  * via the `definition` "footer_select".
  */
 export interface FooterSelect<T extends boolean = true> {
-  navItems?:
+  description?: T;
+  quickLinks?:
     | T
     | {
         link?:
@@ -1815,6 +1828,21 @@ export interface FooterSelect<T extends boolean = true> {
               label?: T;
             };
         id?: T;
+      };
+  contact?:
+    | T
+    | {
+        email?: T;
+        phone?: T;
+        address?: T;
+      };
+  socialLinks?:
+    | T
+    | {
+        facebook?: T;
+        twitter?: T;
+        instagram?: T;
+        linkedin?: T;
       };
   updatedAt?: T;
   createdAt?: T;

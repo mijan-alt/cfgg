@@ -53,7 +53,7 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
         {/* Get Involved Button - assuming it's a special nav item */}
         <Link
           href="/membership"
-          className="bg-primary px-4 py-2 rounded-full hover:bg-[#8B6209] transition-colors cursor-pointer whitespace-nowrap"
+          className="bg-primary px-4 py-2 rounded-full hover:bg-[#8B6209] transition-colors cursor-pointer whitespace-nowrap text-white"
         >
           Get Involved
         </Link>
@@ -93,7 +93,7 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
 
       {/* Mobile Drawer */}
       <div
-        className={`fixed top-0 left-0 h-full w-80  shadow-lg transform transition-transform duration-300 z-50 md:hidden ${
+        className={`fixed top-0 bg-white left-0 h-full w-80  shadow-lg transform transition-transform duration-300 z-50 md:hidden ${
           isMenuOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >

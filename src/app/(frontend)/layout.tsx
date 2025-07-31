@@ -11,7 +11,7 @@ import { InitTheme } from '@/providers/Theme/InitTheme'
 import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
 import { draftMode } from 'next/headers'
 import { Raleway } from "next/font/google"
-import Footer from '@/Footer/Footer'
+import { Footer } from '@/Footer/Component'
 
 import './globals.css'
 import { getServerSideURL } from '@/utilities/getURL'

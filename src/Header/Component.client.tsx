@@ -41,9 +41,9 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
           <Link href="/" className="flex items-center space-x-2">
             <Logo loading="eager" priority="high"  />
           </Link>
-            <p>
+            <span className='font-bold text-primary '>
               CfGG
-            </p>
+            </span>
           </div>
           
 
