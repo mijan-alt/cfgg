@@ -53,8 +53,8 @@ export const ArchiveBlock: React.FC<
   }
 
   return (
-    <div className="py-20 " id={`block-${id}`}>
-      <div className="container mx-auto px-4 max-w-7xl">
+    <div className="py-12" id={`block-${id}`}>
+      <div className="container mx-auto max-w-7xl">
        <div className="text-center mb-16">
       {introContent && (
         <div className="max-w-4xl mx-auto">
@@ -67,7 +67,7 @@ export const ArchiveBlock: React.FC<
       )}
     </div>
 
-    <div className="rounded-2xl p-8 md:p-12 shadow-sm">
+    <div className="rounded-2xl  shadow-sm ">
       <CollectionArchive posts={posts} />
     </div>
   </div>
