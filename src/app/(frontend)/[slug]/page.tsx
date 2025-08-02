@@ -80,7 +80,7 @@ export default async function Page({ params: paramsPromise }: Args) {
 
   return (
     <article className="pb-24">
-      <PageClient />
+      {/* <PageClient /> */}
       {/* Allows redirects for valid pages too */}
       <PayloadRedirects disableNotFound url={url} />
 

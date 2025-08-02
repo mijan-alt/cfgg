@@ -11,7 +11,14 @@ export default function WhoWeAre() {
       {/* Section Title */}
       <div className="text-center mb-12">
         <h2 className="text-4xl md:text-5xl font-semibold mb-4">Who we are</h2>
-        <hr className="w-80 text-primary mx-auto" />
+        <div className="flex items-center">
+            <hr className="flex-grow text-primary" />
+            <div
+              className="w-4 h-4 rotate-45 mx-2 bg-primary"
+              aria-hidden="true"
+            ></div>
+            <hr className="flex-grow text-primary" />
+          </div>
       </div>
 
       {/* Content Container */}
