@@ -31,7 +31,7 @@ export const About: React.FC<AboutBlock> = ({
           </div>
 
           {/* Image and Mission Card */}
-          <div className="grid gap-1 sm:gap-2 md:gap-6 md:grid-cols-2">
+          <div className="grid gap-2 md:gap-6 md:grid-cols-2">
             <Media
               resource={image}
               className="w-full  rounded-2xl object-cover overflow-hidden"
