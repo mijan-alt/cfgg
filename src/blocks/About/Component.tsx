@@ -31,14 +31,14 @@ export const About: React.FC<AboutBlock> = ({
           </div>
 
           {/* Image and Mission Card */}
-          <div className="grid gap-6 md:grid-cols-2">
+          <div className="grid gap-1 sm:gap-2 md:gap-6 md:grid-cols-2">
             <Media
               resource={image}
-              className="w-full h-96 rounded-2xl object-cover overflow-hidden"
+              className="w-full  rounded-2xl object-cover overflow-hidden"
               imgClassName="rounded-2xl "
             />
 
-            <Card className="bg-[#dfe0df] border-0">
+            <Card className="bg-[#dfe0df] border-0 rounded-2xl">
               <CardContent className="flex flex-col justify-between gap-10 p-10 h-full">
                 <Badge
                   variant="secondary"
