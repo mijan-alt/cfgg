@@ -21,7 +21,7 @@ export default function Carousel1Block({ heading, intro, caseStudies }: Carousel
   }
 
   return (
-    <section className="py-6 sm:py-20">
+    <section className="">
       <div className="container">
         <div className="mb-14 flex items-end justify-between">
           <div className="flex flex-col gap-4">
