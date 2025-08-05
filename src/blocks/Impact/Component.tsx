@@ -1,4 +1,5 @@
 'use client'
+
 import React, { useState, useEffect, useRef } from 'react'
 import { Users, MapPin, Award } from 'lucide-react'
 
@@ -39,7 +40,6 @@ const Counter: React.FC<CounterProps> = ({ end, duration = 2000, suffix = '' }) 
     const animate = (currentTime: number) => {
       if (!startTime) startTime = currentTime
       const progress = Math.min((currentTime - startTime) / duration, 1)
-
       const easeOutQuart = 1 - Math.pow(1 - progress, 4)
       setCount(Math.floor(easeOutQuart * end))
 
@@ -86,15 +86,22 @@ export const ImpactBlock: React.FC = () => {
   ]
 
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-b from-primary to-[#007b6c]">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section className="relative py-16 md:py-24">
+      {/* Background Image */}
+      <div
+        className="absolute inset-0 bg-fixed bg-center bg-cover z-0"
+        style={{ backgroundImage: 'url(/assets/africa.jpg)' }}
+      />
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black bg-opacity-60 z-10" />
+
+      <div className="relative z-20 max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-semibold text-white mb-4">
             Our Impact Across Nigeria
           </h2>
           <p className="text-lg text-white/90 max-w-2xl mx-auto">
-            Together\, we are re building a stronger democracy through civic engagement and youth
-            empowerment
+            Together, we are rebuilding a stronger democracy through civic engagement and youth empowerment.
           </p>
         </div>
 
