@@ -79,7 +79,7 @@ export const About: React.FC<AboutBlock> = ({
           </div>
           <div className="grid gap-10 md:grid-cols-2">
             <div>
-              <Badge variant="secondary" className="mb-10 text-xs font-medium bg-[#a88c66]">
+              <Badge variant="secondary" className="mb-10 text-xs font-medium bg-[#a88c66] text-white">
                 GET INVOLVED
               </Badge>
               <h2 className="mb-2.5 text-3xl font-semibold md:text-5xl ">

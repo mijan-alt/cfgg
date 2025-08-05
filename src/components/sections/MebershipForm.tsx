@@ -38,13 +38,10 @@ import {
   UserCheck,
 } from 'lucide-react'
 
-
 import nigerianStatesAndLGAs from '@/lib/nigerian-states-lgas.json'
 import { addMember } from '@/app/(frontend)/serverActions/membership/action'
 
 export default function MembershipForm() {
-
-
   const MEMBERSHIP_FEE = 200 // Example fee in NGN
 
   const [fullName, setFullName] = useState('')
@@ -141,30 +138,23 @@ export default function MembershipForm() {
     <section className="py-12 px-4 md:px-8 lg:px-16 max-w-7xl mx-auto">
       {/* Value Proposition Header */}
       <div className="text-center mb-12">
-      
         <h1 className="text-4xl font-bold text-gray-900 mb-4">Join the Movement for Change</h1>
         <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-6">
           Become part of Nigeria`s most active civic community. Your membership directly supports
           democratic participation and good governance initiatives across the country.
         </p>
-
-      
-       
       </div>
-
-     
-     
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Left Column - Form */}
         <div className="lg:col-span-2">
           <Card className="shadow-xl border-0">
-            <CardHeader className="text-center bg-gradient-to-r from-primary to-[#D4A94A] text-white rounded-t-lg">
+            <CardHeader className="text-center bg-[#dfe0df] rounded-t-lg">
               <CardTitle className="text-3xl font-bold flex items-center justify-center gap-2">
                 <Shield size={28} />
                 Become a CfGG Member
               </CardTitle>
-              <CardDescription className="text-white/90 text-lg">
+              <CardDescription className="text-lg">
                 Join 800+ active citizens championing good governance
               </CardDescription>
             </CardHeader>
@@ -173,8 +163,6 @@ export default function MembershipForm() {
                 {/* Hidden input for membership fee */}
                 <input type="hidden" name="membershipFee" value={MEMBERSHIP_FEE} />
 
-             
-               
                 {/* Personal Info */}
                 <div className="space-y-4">
                   <div className="flex items-center gap-2 mb-4">
@@ -291,15 +279,11 @@ export default function MembershipForm() {
                 {/* Submit Button */}
                 <Button
                   type="submit"
-                  className="w-full py-6 text-lg font-bold flex items-center justify-center space-x-3 bg-gradient-to-r from-primary to-[#D4A94A] hover:from-[#8B6209] hover:to-primary transform transition-all duration-200 hover:scale-[1.02] shadow-lg"
+                  className="w-full py-6 text-lg font-bold flex items-center justify-center space-x-3 bg-primary  hover:scale-[1.02] shadow-lg"
                   disabled={pending}
                 >
                   <Shield size={20} />
-                  <span>
-                    {pending
-                      ? 'Processing...'
-                      : `Secure My Membership `}
-                  </span>
+                  <span>{pending ? 'Processing...' : `Secure My Membership `}</span>
                   <ArrowRight size={20} />
                 </Button>
               </form>
@@ -333,7 +317,6 @@ export default function MembershipForm() {
             </CardContent>
           </Card>
 
-          
           {/* Trust Indicators */}
           {/* <Card className="shadow-lg">
             <CardHeader>
