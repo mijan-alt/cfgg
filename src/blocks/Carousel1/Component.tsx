@@ -30,10 +30,10 @@ export default function Carousel1Block({ heading, intro, caseStudies }: Carousel
           </div>
           <div className="hidden gap-2 md:flex">
             <Button variant="ghost" size="icon" onClick={() => scroll('left')}>
-              <ArrowLeft className="size-5" />
+              <ArrowLeft className="size-5 text-primary" />
             </Button>
             <Button variant="ghost" size="icon" onClick={() => scroll('right')}>
-              <ArrowRight className="size-5" />
+              <ArrowRight className="size-5 text-primary" />
             </Button>
           </div>
         </div>

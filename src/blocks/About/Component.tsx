@@ -38,9 +38,12 @@ export const About: React.FC<AboutBlock> = ({
               pictureClassName="rounded-2xl"
             />
 
-            <Card className="bg-muted border-0">
+            <Card className="bg-[#dfe0df] border-0">
               <CardContent className="flex flex-col justify-between gap-10 p-10 h-full">
-                <Badge variant="secondary" className="text-xs font-medium w-fit">
+                <Badge
+                  variant="secondary"
+                  className="text-xs font-medium w-fit bg-[#a88c66] text-white"
+                >
                   OUR MISSION
                 </Badge>
                 <p className="text-lg font-medium">{missionText}</p>
@@ -63,7 +66,7 @@ export const About: React.FC<AboutBlock> = ({
                 return (
                   <Card key={idx} className="border-0 shadow-none bg-transparent">
                     <CardContent className="flex flex-col p-0">
-                      <div className="mb-5 flex size-12 items-center justify-center rounded-2xl bg-accent">
+                      <div className="mb-5 flex size-12 items-center justify-center rounded-2xl bg-accent text-primary">
                         {Icon && <Icon className="size-5" />}
                       </div>
                       <h3 className="mt-2 mb-3 text-lg font-semibold">{feature.title}</h3>
@@ -76,10 +79,10 @@ export const About: React.FC<AboutBlock> = ({
           </div>
           <div className="grid gap-10 md:grid-cols-2">
             <div>
-              <Badge variant="secondary" className="mb-10 text-xs font-medium">
+              <Badge variant="secondary" className="mb-10 text-xs font-medium bg-[#a88c66]">
                 GET INVOLVED
               </Badge>
-              <h2 className="mb-2.5 text-3xl font-semibold md:text-5xl">
+              <h2 className="mb-2.5 text-3xl font-semibold md:text-5xl ">
                 Be a Voice for Change in Nigeria
               </h2>
             </div>

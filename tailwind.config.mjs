@@ -59,7 +59,7 @@ const config = {
         primary: '#AF7C0F',
         secondary: '#331401',
         accent: {
-          DEFAULT: 'hsl(var(--accent))',
+          DEFAULT: '#FFF8EE',
           foreground: 'hsl(var(--accent-foreground))',
         },
         background: 'hsl(var(--background))',
