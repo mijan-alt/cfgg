@@ -35,7 +35,7 @@ export const About: React.FC<AboutBlock> = ({
             <Media
               resource={image}
               className="w-full h-96 rounded-2xl object-cover overflow-hidden"
-              pictureClassName="rounded-2xl"
+              imgClassName="rounded-2xl "
             />
 
             <Card className="bg-[#dfe0df] border-0">
