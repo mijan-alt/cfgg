@@ -141,44 +141,19 @@ export default function MembershipForm() {
     <section className="py-12 px-4 md:px-8 lg:px-16 max-w-7xl mx-auto">
       {/* Value Proposition Header */}
       <div className="text-center mb-12">
-        <div className="flex justify-center items-center gap-2 mb-4">
-          <Badge variant="outline" className="border-green-500 text-green-600">
-            <TrendingUp size={14} className="mr-1" />
-            847 Members Joined
-          </Badge>
-        </div>
+      
         <h1 className="text-4xl font-bold text-gray-900 mb-4">Join the Movement for Change</h1>
         <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-6">
           Become part of Nigeria`s most active civic community. Your membership directly supports
           democratic participation and good governance initiatives across the country.
         </p>
 
-        {/* Progress toward membership goal */}
-        <Card className="max-w-md mx-auto mb-8">
-          <CardContent className="p-4">
-            <div className="flex justify-between items-center mb-2">
-              <span className="text-sm font-medium">Members this month</span>
-              <span className="text-sm text-gray-600">
-                {membershipProgress.current}/{membershipProgress.target}
-              </span>
-            </div>
-            <Progress value={membershipProgress.percentage} className="h-2 mb-2" />
-            <p className="text-xs text-gray-500 text-center">
-              Join {membershipProgress.target - membershipProgress.current} others to reach our
-              community goal!
-            </p>
-          </CardContent>
-        </Card>
+      
+       
       </div>
 
-      {/* Notice Alert */}
-      <Alert className="mb-8 bg-yellow-50 border-yellow-200 text-yellow-800">
-        <AlertTriangle size={20} className="text-yellow-600" />
-        <AlertTitle>Test Mode Active</AlertTitle>
-        <AlertDescription>
-          This is a demonstration. No real payments will be processed.
-        </AlertDescription>
-      </Alert>
+     
+     
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Left Column - Form */}
@@ -198,22 +173,8 @@ export default function MembershipForm() {
                 {/* Hidden input for membership fee */}
                 <input type="hidden" name="membershipFee" value={MEMBERSHIP_FEE} />
 
-                {/* Membership Value Highlight */}
-                <div className="bg-gradient-to-br from-primary/10 to-primary/5 p-6 rounded-xl border border-primary/20">
-                  <div className="flex items-center justify-between mb-4">
-                    <div>
-                      <h3 className="text-2xl font-bold text-gray-900">One-Time Investment</h3>
-                      <p className="text-gray-600">Lifetime access to all member benefits</p>
-                    </div>
-                    <div className="text-right">
-                      <div className="text-3xl font-bold text-primary">
-                        ₦{MEMBERSHIP_FEE.toLocaleString()}
-                      </div>
-                      <div className="text-sm text-gray-500 line-through">₦8,000</div>
-                    </div>
-                  </div>
-                </div>
-
+             
+               
                 {/* Personal Info */}
                 <div className="space-y-4">
                   <div className="flex items-center gap-2 mb-4">
@@ -337,7 +298,7 @@ export default function MembershipForm() {
                   <span>
                     {pending
                       ? 'Processing...'
-                      : `Secure My Membership - ₦${MEMBERSHIP_FEE.toLocaleString()}`}
+                      : `Secure My Membership `}
                   </span>
                   <ArrowRight size={20} />
                 </Button>
@@ -372,34 +333,9 @@ export default function MembershipForm() {
             </CardContent>
           </Card>
 
-          {/* Social Proof - Testimonials */}
-          {/* <Card className="shadow-lg">
-            <CardHeader>
-              <CardTitle className="text-xl font-bold flex items-center gap-2">
-                <MessageCircle className="text-primary" size={24} />
-                What Members Say
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              {testimonials.map((testimonial, index) => (
-                <div key={index} className="p-4 bg-gray-50 rounded-lg">
-                  <div className="flex items-center gap-1 mb-2">
-                    {Array.from({ length: testimonial.rating }).map((_, i) => (
-                      <Star key={i} className="text-yellow-500 fill-current" size={14} />
-                    ))}
-                  </div>
-                  <p className="text-sm text-gray-700 mb-2">"{testimonial.content}"</p>
-                  <div className="text-xs text-gray-500">
-                    <div className="font-semibold">{testimonial.name}</div>
-                    <div>{testimonial.role}</div>
-                  </div>
-                </div>
-              ))}
-            </CardContent>
-          </Card> */}
-
+          
           {/* Trust Indicators */}
-          <Card className="shadow-lg">
+          {/* <Card className="shadow-lg">
             <CardHeader>
               <CardTitle className="text-xl font-bold flex items-center gap-2">
                 <Heart className="text-primary" size={24} />
@@ -431,7 +367,7 @@ export default function MembershipForm() {
                 <div className="text-xs text-gray-600">Member satisfaction rate</div>
               </div>
             </CardContent>
-          </Card>
+          </Card> */}
         </div>
       </div>
     </section>
