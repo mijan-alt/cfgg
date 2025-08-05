@@ -177,14 +177,7 @@ export default function DonationForm() {
         </p>
       </div>
 
-      {/* Test Mode Alert */}
-      <Alert className="mb-8 bg-yellow-50 border-yellow-200 text-yellow-800">
-        <AlertTriangle size={20} className="text-yellow-600" />
-        <AlertTitle>Test Mode Active</AlertTitle>
-        <AlertDescription>
-          This is a demonstration. No real payments will be processed.
-        </AlertDescription>
-      </Alert>
+      
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Left Column - Donation Form */}
