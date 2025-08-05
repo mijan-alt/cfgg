@@ -16,11 +16,8 @@ import CTASection from '@/components/sections/cta'
 import Commitment from '@/components/sections/Commitment'
 import DonationForm from '@/components/sections/DonationForm'
 import MembershipForm from '@/components/sections/MebershipForm'
-
-
-
-
-
+import About from '@/components/sections/About'
+import CaseStudiesCarousel from '@/components/sections/CaseStudies'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
@@ -74,12 +71,12 @@ export default async function Page({ params: paramsPromise }: Args) {
 
   const { hero, layout } = page
   const isHomePage = slug === 'home'
-  const isAboutPage = slug ==="about"
-  const isDonation = slug === "donate"
-  const isMembership = slug === "membership"
+  const isAboutPage = slug === 'about'
+  const isDonation = slug === 'donate'
+  const isMembership = slug === 'membership'
 
   return (
-    <article className="pb-24">
+    <article className="">
       {/* <PageClient /> */}
       {/* Allows redirects for valid pages too */}
       <PayloadRedirects disableNotFound url={url} />
@@ -87,37 +84,35 @@ export default async function Page({ params: paramsPromise }: Args) {
       {draft && <LivePreviewListener />}
 
       <RenderHero {...hero} />
-      
+
       {/* Only render these sections on the home page */}
       {isHomePage && (
         <>
-          <WhoWeAre />
-          <ImpactSection />
-          <CTASection />
+          {/* <CaseStudiesCarousel /> */}
+          {/* <About/> */}
+          {/* <WhoWeAre /> */}
+          {/* <ImpactSection /> */}
         </>
       )}
 
       {isAboutPage && (
-          <>
-            <Commitment/>
-          </>
+        <>
+          <Commitment />
+        </>
       )}
 
       {isDonation && (
         <>
-           <DonationForm/>
+          <DonationForm />
         </>
       )}
-      
+
       {isMembership && (
-          <>
-            <MembershipForm/>
-          </>
-  
+        <>
+          <MembershipForm />
+        </>
       )}
-    {layout && Array.isArray(layout) && layout.length > 0 && (
-       <RenderBlocks blocks={layout} />
-    )}
+      {layout && Array.isArray(layout) && layout.length > 0 && <RenderBlocks blocks={layout} />}
     </article>
   )
 }

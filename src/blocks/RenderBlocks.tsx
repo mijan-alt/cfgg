@@ -6,6 +6,14 @@ import { ContentBlock } from '@/blocks/Content/Component'
 import { FormBlock } from '@/blocks/Form/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { MissionAndVision } from '@/blocks/AlternatingBlock/Component'
+import { CarouselBlock } from './Carousel/Component'
+import { About } from './About/Component'
+import { CTA2Block } from './cta/Component'
+import { ImpactBlock } from './Impact/Component'
+import Carousel1Block from './Carousel1/Component'
+
+
+
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -13,7 +21,13 @@ const blockComponents = {
   cta: CallToActionBlock,
   formBlock: FormBlock,
   mediaBlock: MediaBlock,
-  missionAndVision: MissionAndVision
+  missionAndVision: MissionAndVision,
+  carousel:CarouselBlock,
+  aboutBlock:About,
+  cta2:CTA2Block,
+  impact:ImpactBlock,
+  carousel1:Carousel1Block
+
 }
 
 // ✅ Updated type definition to handle the actual Page layout type

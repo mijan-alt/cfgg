@@ -199,7 +199,21 @@ export interface Page {
       | null;
     media?: (number | null) | Media;
   };
-  layout?: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock | MissionAndVisionBlock)[] | null;
+  layout?:
+    | (
+        | CallToActionBlock
+        | ContentBlock
+        | MediaBlock
+        | ArchiveBlock
+        | FormBlock
+        | MissionAndVisionBlock
+        | Carousel
+        | AboutBlock
+        | Cta2
+        | Impact
+        | Carousel1
+      )[]
+    | null;
   meta?: {
     title?: string | null;
     /**
@@ -766,6 +780,122 @@ export interface MissionAndVisionBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Carousel".
+ */
+export interface Carousel {
+  introContent?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  points: {
+    title: string;
+    description: string;
+    image: number | Media;
+    readTime: string;
+    category: string;
+    id?: string | null;
+  }[];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'carousel';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "aboutBlock".
+ */
+export interface AboutBlock {
+  heading: string;
+  subheading: string;
+  image: number | Media;
+  missionText: string;
+  features?:
+    | {
+        title: string;
+        description: string;
+        icon: 'building' | 'users' | 'graduationCap';
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'aboutBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "cta2".
+ */
+export interface Cta2 {
+  heading: string;
+  subheading?: string | null;
+  primaryButton: {
+    label: string;
+    link: number | Page;
+  };
+  secondaryButton: {
+    label: string;
+    link: number | Page;
+  };
+  backgroundImage: number | Media;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'cta2';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "impact".
+ */
+export interface Impact {
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'impact';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "carousel1".
+ */
+export interface Carousel1 {
+  heading: string;
+  intro: string;
+  caseStudies?:
+    | {
+        title: string;
+        description: string;
+        image: number | Media;
+        link: {
+          type: 'custom' | 'reference';
+          url?: string | null;
+          reference?:
+            | ({
+                relationTo: 'pages';
+                value: number | Page;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: number | Post;
+              } | null);
+          label?: string | null;
+          newTab?: boolean | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'carousel1';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "donations".
  */
 export interface Donation {
@@ -1137,6 +1267,11 @@ export interface PagesSelect<T extends boolean = true> {
         archive?: T | ArchiveBlockSelect<T>;
         formBlock?: T | FormBlockSelect<T>;
         missionAndVision?: T | MissionAndVisionBlockSelect<T>;
+        carousel?: T | CarouselSelect<T>;
+        aboutBlock?: T | AboutBlockSelect<T>;
+        cta2?: T | Cta2Select<T>;
+        impact?: T | ImpactSelect<T>;
+        carousel1?: T | Carousel1Select<T>;
       };
   meta?:
     | T
@@ -1249,6 +1384,103 @@ export interface MissionAndVisionBlockSelect<T extends boolean = true> {
     | T
     | {
         text?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Carousel_select".
+ */
+export interface CarouselSelect<T extends boolean = true> {
+  introContent?: T;
+  points?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        image?: T;
+        readTime?: T;
+        category?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "aboutBlock_select".
+ */
+export interface AboutBlockSelect<T extends boolean = true> {
+  heading?: T;
+  subheading?: T;
+  image?: T;
+  missionText?: T;
+  features?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        icon?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "cta2_select".
+ */
+export interface Cta2Select<T extends boolean = true> {
+  heading?: T;
+  subheading?: T;
+  primaryButton?:
+    | T
+    | {
+        label?: T;
+        link?: T;
+      };
+  secondaryButton?:
+    | T
+    | {
+        label?: T;
+        link?: T;
+      };
+  backgroundImage?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "impact_select".
+ */
+export interface ImpactSelect<T extends boolean = true> {
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "carousel1_select".
+ */
+export interface Carousel1Select<T extends boolean = true> {
+  heading?: T;
+  intro?: T;
+  caseStudies?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        image?: T;
+        link?:
+          | T
+          | {
+              type?: T;
+              url?: T;
+              reference?: T;
+              label?: T;
+              newTab?: T;
+            };
         id?: T;
       };
   id?: T;

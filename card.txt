@@ -1,0 +1,14 @@
+ <div
+                key={point.id || index}
+                className="bg-white rounded-xl shadow-md overflow-hidden"
+              >
+                {point.image && (
+                  <Media resource={point.image} className="w-full h-48 object-cover" />
+                )}
+                <div className="p-6">
+                  <p className="text-sm text-green-600 mb-1 uppercase">{point.category}</p>
+                  <h3 className="text-xl font-semibold mb-2">{point.title}</h3>
+                  <p className="text-gray-600 mb-4">{point.description}</p>
+                  <span className="text-sm text-gray-400">{point.readTime}</span>
+                </div>
+              </div>

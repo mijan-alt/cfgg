@@ -81,7 +81,7 @@ export default function WhoWeAre() {
             <Card className="text-center border border-primary" >
               <CardContent className="py-6">
                 <div className="flex justify-center mb-3">
-                  <GraduationCap size={32} text-prma />
+                  <GraduationCap size={32}  className='text-primary' />
                 </div>
                 <h4 className="text-lg font-semibold mb-1">Civic Education</h4>
                 <p className="text-gray-600 text-sm">

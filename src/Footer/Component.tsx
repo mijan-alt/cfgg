@@ -3,6 +3,7 @@ import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from 'luc
 import Link from 'next/link'
 import { getCachedGlobal } from '@/utilities/getGlobals'
 import type { Footer as FooterType } from '@/payload-types'
+import { CMSLink } from '@/components/Link'
 
 export async function Footer() {
  const footerData: FooterType = await getCachedGlobal('footer', 1)() as FooterType
@@ -57,9 +58,13 @@ export async function Footer() {
             <ul className="space-y-2">
               {quickLinks?.map(({ link }, i) => (
                 <li key={i}>
-                  <Link href={link.url || null || ''} className="text-gray-300 hover:text-primary transition-colors">
-                    {link.label}
-                  </Link>
+
+                  <CMSLink
+                   {...link}
+                    appearance="link"
+                    className="text-gray-300 hover:text-primary transition-colors "
+                    />
+                  
                 </li>
               ))}
             </ul>

@@ -13,6 +13,11 @@ import { populatePublishedAt } from '../../hooks/populatePublishedAt'
 import { generatePreviewPath } from '../../utilities/generatePreviewPath'
 import { revalidateDelete, revalidatePage } from './hooks/revalidatePage'
 import { missionAndVisionBlock } from '@/blocks/AlternatingBlock/config'
+import { Carousel } from '@/blocks/Carousel/config'
+import AboutBlock from '@/blocks/About/config'
+import { CTA2 } from '@/blocks/cta/config'
+import { Impact } from '@/blocks/Impact/config'
+import { Carousel1 } from '@/blocks/Carousel1/config'
 import {
   MetaDescriptionField,
   MetaImageField,
@@ -81,7 +86,12 @@ export const Pages: CollectionConfig<'pages'> = {
                 MediaBlock,
                 Archive,
                 FormBlock,
-                missionAndVisionBlock
+                missionAndVisionBlock,
+                Carousel,
+                AboutBlock,
+                CTA2,
+                Impact,
+                Carousel1,
               ],
               admin: {
                 initCollapsed: true,
