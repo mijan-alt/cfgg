@@ -31,7 +31,7 @@ const HeroSection: React.FC = () => {
           governance, democratic participation, and civic awareness in Nigeria and across Africa.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <div className="flex flex-row gap-4 justify-center items-center">
           <button className="bg-primary hover:bg-[#8B6209] text-white font-semibold py-3 px-8 rounded-full transition-colors duration-300 cursor-pointer">
             <Link href={'/membership'}>Become a Member</Link>
           </button>
