@@ -1,55 +1,50 @@
-'use client';
+'use client'
 
-import { useHeaderTheme } from '@/providers/HeaderTheme';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import React, { useEffect, useState } from 'react';
+import { useHeaderTheme } from '@/providers/HeaderTheme'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import React, { useEffect, useState } from 'react'
 
-import type { Header } from '@/payload-types';
+import type { Header } from '@/payload-types'
 
-import { Logo } from '@/components/Logo/Logo';
-import { HeaderNav } from './Nav';
+import { Logo } from '@/components/Logo/Logo'
+import { HeaderNav } from './Nav'
 
 interface HeaderClientProps {
-  data: Header;
+  data: Header
 }
 
 export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
   /* Storing the value in a useState to avoid hydration errors */
-  const [theme, setTheme] = useState<string | null>(null);
-  const { headerTheme, setHeaderTheme } = useHeaderTheme();
-  const pathname = usePathname();
+  const [theme, setTheme] = useState<string | null>(null)
+  const { headerTheme, setHeaderTheme } = useHeaderTheme()
+  const pathname = usePathname()
 
   useEffect(() => {
-    setHeaderTheme(null);
+    setHeaderTheme(null)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pathname]);
+  }, [pathname])
 
   useEffect(() => {
-    if (headerTheme && headerTheme !== theme) setTheme(headerTheme);
+    if (headerTheme && headerTheme !== theme) setTheme(headerTheme)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [headerTheme]);
+  }, [headerTheme])
 
   return (
-    <header 
+    <header
       className=" shadow-sm  bg-white sticky top-0 z-50 "
       {...(theme ? { 'data-theme': theme } : {})}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex justify-between items-center">
-          <div className='flex items-center gap-2'>
-          <Link href="/" className="flex items-center space-x-2">
-            <Logo loading="eager" priority="high"  />
+          <Link href="/" className="flex items-center space-x-1">
+            <Logo loading="eager" priority="high" />
+            <span className="font-bold text-primary block">CfGG</span>
           </Link>
-            <span className='font-bold text-primary '>
-              CfGG
-            </span>
-          </div>
-          
 
           <HeaderNav data={data} />
         </div>
       </div>
     </header>
-  );
-};
+  )
+}
