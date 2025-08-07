@@ -1,10 +1,8 @@
 import type { Post, ArchiveBlock as ArchiveBlockProps } from '@/payload-types'
-
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import React from 'react'
 import RichText from '@/components/RichText'
-
 import { CollectionArchive } from '@/components/CollectionArchive'
 
 export const ArchiveBlock: React.FC<
@@ -53,24 +51,14 @@ export const ArchiveBlock: React.FC<
   }
 
   return (
-    <div className="" id={`block-${id}`}>
-      <div className="container mx-auto max-w-7xl">
-        <div className="text-center mb-16">
-          {introContent && (
-            <div className="max-w-4xl mx-auto">
-              <RichText
-                className="text-lg md:text-xl leading-relaxed"
-                data={introContent}
-                enableGutter={false}
-              />
-            </div>
-          )}
-        </div>
+    <section className="py-32" id={`block-${id}`}>
+      <div className="container mx-auto px-4">
+        <h1 className="mb-12 max-w-lg font-sans text-5xl font-extrabold tracking-tight text-foreground md:text-7xl">
+          Latest News & Updates
+        </h1>
 
-        <div className="rounded-2xl  shadow-sm ">
-          <CollectionArchive posts={posts} />
-        </div>
+        <CollectionArchive posts={posts} />
       </div>
-    </div>
+    </section>
   )
 }

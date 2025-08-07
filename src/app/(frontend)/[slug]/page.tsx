@@ -18,6 +18,7 @@ import DonationForm from '@/components/sections/DonationForm'
 import MembershipForm from '@/components/sections/MebershipForm'
 import About from '@/components/sections/About'
 import CaseStudiesCarousel from '@/components/sections/CaseStudies'
+import BlogContentSection from '@/components/sections/Blogs'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
@@ -92,6 +93,7 @@ export default async function Page({ params: paramsPromise }: Args) {
           {/* <About/> */}
           {/* <WhoWeAre /> */}
           {/* <ImpactSection /> */}
+        
         </>
       )}
 

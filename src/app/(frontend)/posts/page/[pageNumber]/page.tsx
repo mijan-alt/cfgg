@@ -34,11 +34,11 @@ export default async function Page({ params: paramsPromise }: Args) {
   })
 
   return (
-    <div className="pt-24 pb-24">
+    <div className="pt-24 pb-24 px-16">
       <PageClient />
       <div className="container mb-16">
         <div className="prose dark:prose-invert max-w-none">
-          <h1>Posts</h1>
+          <h1>News</h1>
         </div>
       </div>
 
@@ -50,8 +50,9 @@ export default async function Page({ params: paramsPromise }: Args) {
           totalDocs={posts.totalDocs}
         />
       </div>
-
-      <CollectionArchive posts={posts.docs} />
+      <div className=" mx-auto max-w-7xl bg-red-500">
+        <CollectionArchive posts={posts.docs} />
+      </div>
 
       <div className="container">
         {posts?.page && posts?.totalPages > 1 && (
