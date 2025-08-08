@@ -26,6 +26,7 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
       slug: true,
       categories: true,
       meta: true,
+      createdAt:true
     },
     // pagination: false reduces overhead if you don't need totalDocs
     pagination: false,

@@ -24,8 +24,11 @@ export default async function Page() {
       slug: true,
       categories: true,
       meta: true,
+      createdAt: true
     },
   })
+
+  console.log("docs", posts.docs)
 
   return (
     <div className="pt-24 pb-24">

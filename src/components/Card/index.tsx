@@ -12,21 +12,7 @@ import { Media } from '@/components/Media'
 
 export type CardPostData = Pick<Post, 'slug' | 'categories' | 'meta' | 'title' | 'createdAt'>
 
-// // Category color mapping - you can extend this based on your categories
-// const getCategoryColor = (categoryTitle: string): string => {
-//   const colorMap: Record<string, string> = {
-//    'Program Updates': 'bg-blue-100 text-blue-700 border-blue-200',
-//     Events: 'bg-green-100 text-green-700 border-green-200',
-//     Partnerships: 'bg-purple-100 text-purple-700 border-purple-200',
-//     'Press Releases': 'bg-orange-100 text-orange-700 border-orange-200',
-//     'Impact Stories': 'bg-teal-100 text-teal-700 border-teal-200',
-//     'Funding & Grants': 'bg-indigo-100 text-indigo-700 border-indigo-200',
-//   }
 
-//   return colorMap[categoryTitle] || 'bg-gray-100 text-gray-700 border-gray-200'
-// }
-
-// Format date helper
 const formatDate = (dateString: string): string => {
   const date = new Date(dateString)
   return date.toLocaleDateString('en-GB', {
