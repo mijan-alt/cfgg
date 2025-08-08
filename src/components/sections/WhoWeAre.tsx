@@ -2,7 +2,6 @@ import Image from 'next/image'
 import { Building, Users, GraduationCap } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 
-
 export default function WhoWeAre() {
   const primaryColor = '#AF7C0F'
 
@@ -12,13 +11,10 @@ export default function WhoWeAre() {
       <div className="text-center mb-12">
         <h2 className="text-4xl md:text-5xl font-semibold mb-4">Who we are</h2>
         <div className="flex items-center">
-            <hr className="flex-grow text-primary" />
-            <div
-              className="w-4 h-4 rotate-45 mx-2 bg-primary"
-              aria-hidden="true"
-            ></div>
-            <hr className="flex-grow text-primary" />
-          </div>
+          <hr className="flex-grow text-primary" />
+          <div className="w-4 h-4 rotate-45 mx-2 bg-primary" aria-hidden="true"></div>
+          <hr className="flex-grow text-primary" />
+        </div>
       </div>
 
       {/* Content Container */}
@@ -39,7 +35,7 @@ export default function WhoWeAre() {
           {/* Text Content */}
           <div className="space-y-6 mb-8">
             <h3 className="text-2xl font-semibold">
-              <span className='text-primary'>Champion for Good Governance (CfGG)</span> is a
+              <span className="text-primary">Champion for Good Governance (CfGG)</span> is a
               non-partisan platform committed to fostering good governance, democratic
               participation, and civic awareness in Nigeria and across Africa.
             </h3>
@@ -68,7 +64,7 @@ export default function WhoWeAre() {
             <Card className="text-center border" style={{ borderColor: primaryColor }}>
               <CardContent className="py-6">
                 <div className="flex justify-center mb-3">
-                  <Users size={32} className='text-primary'/>
+                  <Users size={32} className="text-primary" />
                 </div>
                 <h4 className="text-lg font-semibold mb-1">Youth Empowerment</h4>
                 <p className="text-gray-600 text-sm">
@@ -78,10 +74,10 @@ export default function WhoWeAre() {
             </Card>
 
             {/* Civic Education */}
-            <Card className="text-center border border-primary" >
+            <Card className="text-center border border-primary">
               <CardContent className="py-6">
                 <div className="flex justify-center mb-3">
-                  <GraduationCap size={32}  className='text-primary' />
+                  <GraduationCap size={32} className="text-primary" />
                 </div>
                 <h4 className="text-lg font-semibold mb-1">Civic Education</h4>
                 <p className="text-gray-600 text-sm">

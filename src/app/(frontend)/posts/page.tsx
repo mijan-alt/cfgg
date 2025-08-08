@@ -24,11 +24,11 @@ export default async function Page() {
       slug: true,
       categories: true,
       meta: true,
-      createdAt: true
+      createdAt: true,
     },
   })
 
-  console.log("docs", posts.docs)
+  console.log('docs', posts.docs)
 
   return (
     <div className="pt-24 pb-24">
@@ -47,7 +47,7 @@ export default async function Page() {
         />
       </div>
 
-      <div className=" mx-auto max-w-7xl">
+      <div className=" mx-auto px-4 max-w-7xl">
         <CollectionArchive posts={posts.docs} />
       </div>
 
@@ -62,6 +62,6 @@ export default async function Page() {
 
 export function generateMetadata(): Metadata {
   return {
-    title: `Payload Website Template Posts`,
+    title: `Champion for Good Governance`,
   }
 }
