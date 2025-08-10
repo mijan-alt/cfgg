@@ -1,5 +1,4 @@
 import type { Block } from 'payload'
-
 import {
   FixedToolbarFeature,
   HeadingFeature,
@@ -15,14 +14,12 @@ export const Archive: Block = {
       name: 'introContent',
       type: 'richText',
       editor: lexicalEditor({
-        features: ({ rootFeatures }) => {
-          return [
-            ...rootFeatures,
-            HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-            FixedToolbarFeature(),
-            InlineToolbarFeature(),
-          ]
-        },
+        features: ({ rootFeatures }) => [
+          ...rootFeatures,
+          HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+          FixedToolbarFeature(),
+          InlineToolbarFeature(),
+        ],
       }),
       label: 'Intro Content',
     },
@@ -31,30 +28,18 @@ export const Archive: Block = {
       type: 'select',
       defaultValue: 'collection',
       options: [
-        {
-          label: 'Collection',
-          value: 'collection',
-        },
-        {
-          label: 'Individual Selection',
-          value: 'selection',
-        },
+        { label: 'Collection', value: 'collection' },
+        { label: 'Individual Selection', value: 'selection' },
       ],
     },
+ 
     {
       name: 'relationTo',
-      type: 'select',
+      type: 'text',
+      defaultValue: 'news',
       admin: {
-        condition: (_, siblingData) => siblingData.populateBy === 'collection',
+        condition: () => false, 
       },
-      defaultValue: 'posts',
-      label: 'Collections To Show',
-      options: [
-        {
-          label: 'Posts',
-          value: 'posts',
-        },
-      ],
     },
     {
       name: 'categories',
@@ -84,7 +69,7 @@ export const Archive: Block = {
       },
       hasMany: true,
       label: 'Selection',
-      relationTo: ['posts'],
+      relationTo: 'news',
     },
   ],
   labels: {

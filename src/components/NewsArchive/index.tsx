@@ -1,19 +1,19 @@
 import { cn } from '@/utilities/ui'
 import React from 'react'
-import { Card, CardPostData } from '@/components/Card'
+import { NewsCard, CardPostData } from '@/components/NewsCard'
 
 export type Props = {
   posts: CardPostData[]
 }
 
-export const CollectionArchive: React.FC<Props> = (props) => {
+export const NewsArchive: React.FC<Props> = (props) => {
   const { posts } = props
 
   return (
-    <div className="flex flex-col space-y-16 w-full">
+    <div className="mx-auto max-w-7xl space-y-12">
       {posts?.map((result, index) => {
         if (typeof result === 'object' && result !== null) {
-          return <Card key={index} doc={result} relationTo="posts" showCategories layout="news" />
+          return <NewsCard key={index} doc={result} relationTo="news" showCategories />
         }
         return null
       })}

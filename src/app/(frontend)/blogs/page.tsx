@@ -1,6 +1,6 @@
 import type { Metadata } from 'next/types'
 
-import { CollectionArchive } from '@/components/CollectionArchive'
+import { NewsArchive } from '@/components/NewsArchive'
 import { PageRange } from '@/components/PageRange'
 import { Pagination } from '@/components/Pagination'
 import configPromise from '@payload-config'
@@ -15,7 +15,7 @@ export default async function Page() {
   const payload = await getPayload({ config: configPromise })
 
   const posts = await payload.find({
-    collection: 'posts',
+    collection: 'blogs',
     depth: 1,
     limit: 12,
     overrideAccess: false,
@@ -34,21 +34,21 @@ export default async function Page() {
     <div className="pt-24 pb-24">
       <div className="container mb-16">
         <div className="prose  max-w-none">
-          <h1>Posts</h1>
+          <h1>Blogs</h1>
         </div>
       </div>
 
       <div className="container mb-8">
-        <PageRange
-          collection="posts"
+        {/* <PageRange
+        
           currentPage={posts.page}
           limit={12}
           totalDocs={posts.totalDocs}
-        />
+        /> */}
       </div>
 
       <div className=" mx-auto px-4 max-w-7xl">
-        <CollectionArchive posts={posts.docs} />
+        <NewsArchive posts={posts.docs} />
       </div>
 
       <div className="container">

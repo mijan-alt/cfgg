@@ -19,6 +19,7 @@ import MembershipForm from '@/components/sections/MebershipForm'
 import About from '@/components/sections/About'
 import CaseStudiesCarousel from '@/components/sections/CaseStudies'
 import BlogContentSection from '@/components/sections/Blogs'
+import BlogSection from '@/components/sections/Blog2'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
@@ -85,18 +86,7 @@ export default async function Page({ params: paramsPromise }: Args) {
       {draft && <LivePreviewListener />}
 
       <RenderHero {...hero} />
-
-      {/* Only render these sections on the home page */}
-      {isHomePage && (
-        <>
-          {/* <CaseStudiesCarousel /> */}
-          {/* <About/> */}
-          {/* <WhoWeAre /> */}
-          {/* <ImpactSection /> */}
-        
-        </>
-      )}
-
+  
       {isAboutPage && (
         <>
           <Commitment />

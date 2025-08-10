@@ -12,7 +12,7 @@ const getPostsSitemap = unstable_cache(
       'https://example.com'
 
     const results = await payload.find({
-      collection: 'posts',
+      collection: 'news',
       overrideAccess: false,
       draft: false,
       depth: 0,
@@ -42,9 +42,9 @@ const getPostsSitemap = unstable_cache(
 
     return sitemap
   },
-  ['posts-sitemap'],
+  ['news-sitemap'],
   {
-    tags: ['posts-sitemap'],
+    tags: ['news-sitemap'],
   },
 )
 

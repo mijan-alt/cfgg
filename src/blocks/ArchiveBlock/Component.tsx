@@ -1,9 +1,9 @@
-import type { Post, ArchiveBlock as ArchiveBlockProps } from '@/payload-types'
+import type { News, ArchiveBlock as ArchiveBlockProps } from '@/payload-types'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import React from 'react'
 import RichText from '@/components/RichText'
-import { CollectionArchive } from '@/components/CollectionArchive'
+import { NewsArchive } from '@/components/NewsArchive'
 
 export const ArchiveBlock: React.FC<
   ArchiveBlockProps & {
@@ -14,7 +14,7 @@ export const ArchiveBlock: React.FC<
 
   const limit = limitFromProps || 3
 
-  let posts: Post[] = []
+  let posts: News[] = []
 
   if (populateBy === 'collection') {
     const payload = await getPayload({ config: configPromise })
@@ -25,7 +25,7 @@ export const ArchiveBlock: React.FC<
     })
 
     const fetchedPosts = await payload.find({
-      collection: 'posts',
+      collection: 'news',
       depth: 1,
       limit,
       ...(flattenedCategories && flattenedCategories.length > 0
@@ -41,13 +41,10 @@ export const ArchiveBlock: React.FC<
 
     posts = fetchedPosts.docs
   } else {
-    if (selectedDocs?.length) {
-      const filteredSelectedPosts = selectedDocs.map((post) => {
-        if (typeof post.value === 'object') return post.value
-      }) as Post[]
+   if (selectedDocs?.length) {
+      posts = selectedDocs.filter((p): p is News => typeof p === 'object')
+}  
 
-      posts = filteredSelectedPosts
-    }
   }
 
   return (
@@ -57,7 +54,7 @@ export const ArchiveBlock: React.FC<
           Latest News & Updates
         </h1>
 
-        <CollectionArchive posts={posts} />
+        <NewsArchive posts={posts} />
       </div>
     </section>
   )

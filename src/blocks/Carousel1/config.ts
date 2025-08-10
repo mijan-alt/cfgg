@@ -64,7 +64,7 @@ export const Carousel1: Block = {
             {
               name: 'reference',
               type: 'relationship',
-              relationTo: ['pages', 'posts'],
+              relationTo: ['pages', 'news'],
               admin: {
                 condition: (_, siblingData) => siblingData.type === 'reference',
               },
