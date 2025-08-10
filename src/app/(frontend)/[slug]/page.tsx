@@ -58,10 +58,9 @@ export default async function Page({ params: paramsPromise }: Args) {
 
   // let page: RequiredDataFromCollectionSlug<'pages'> | null
 
-  const page = await queryPageBySlug({
+ const  page = await queryPageBySlug({
     slug,
   })
-
 
 
   if (!page) {
