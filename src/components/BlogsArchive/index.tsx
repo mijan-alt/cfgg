@@ -8,7 +8,7 @@ export type Props = {
   posts: CardPostData[]
 }
 
-export const NewsArchive: React.FC<Props> = (props) => {
+export const BlogArchive: React.FC<Props> = (props) => {
   const { posts } = props
 
   return (

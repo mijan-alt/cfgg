@@ -1,6 +1,5 @@
 import type { Metadata } from 'next/types'
 
-import { CollectionArchive } from '@/components/NewsArchive'
 import { PageRange } from '@/components/PageRange'
 import { Pagination } from '@/components/Pagination'
 import configPromise from '@payload-config'
@@ -8,6 +7,7 @@ import { getPayload } from 'payload'
 import React from 'react'
 import PageClient from './page.client'
 import { notFound } from 'next/navigation'
+import { NewsArchive } from '@/components/NewsArchive'
 
 export const revalidate = 600
 
@@ -51,7 +51,7 @@ export default async function Page({ params: paramsPromise }: Args) {
         />
       </div>
       <div className=" mx-auto max-w-7xl bg-red-500">
-        <CollectionArchive posts={posts.docs} />
+        <NewsArchive posts={posts.docs} />
       </div>
 
       <div className="container">
