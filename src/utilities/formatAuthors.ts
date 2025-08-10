@@ -1,4 +1,5 @@
-import { Post } from '@/payload-types'
+import { News } from "@/payload-types"
+import { Blog } from "@/payload-types"
 
 /**
  * Formats an array of populatedAuthors from Posts into a prettified string.
@@ -11,7 +12,7 @@ import { Post } from '@/payload-types'
  *
  */
 export const formatAuthors = (
-  authors: NonNullable<NonNullable<Post['populatedAuthors']>[number]>[],
+  authors: NonNullable<NonNullable<Blog['populatedAuthors'] | News['populatedAuthors']>[number]>[],
 ) => {
   // Ensure we don't have any authors without a name
   const authorNames = authors.map((author) => author.name).filter(Boolean)
