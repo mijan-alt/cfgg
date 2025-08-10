@@ -5,10 +5,11 @@ import { News } from '@/payload-types'
 
 import { NewsCard } from '../../components/NewsCard'
 import { SerializedEditorState } from '@payloadcms/richtext-lexical/lexical'
+import { Blog } from '@/payload-types'
 
 export type RelatedPostsProps = {
   className?: string
-  docs?: News[]
+  docs?: News[] 
   introContent?: SerializedEditorState
 }
 

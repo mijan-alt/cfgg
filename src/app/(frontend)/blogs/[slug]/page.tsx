@@ -13,11 +13,13 @@ import { PostHero } from '@/heros/PostHero'
 import { generateMeta } from '@/utilities/generateMeta'
 import PageClient from './page.client'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
+import { RelatedBlogs } from '@/blocks/RelatedBlogs/Component'
+
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
   const news= await payload.find({
-    collection: 'news',
+    collection: 'blogs',
     draft: false,
     limit: 1000,
     overrideAccess: false,
@@ -43,10 +45,10 @@ type Args = {
 export default async function Post({ params: paramsPromise }: Args) {
   const { isEnabled: draft } = await draftMode()
   const { slug = '' } = await paramsPromise
-  const url = '/news/' + slug
-  const news = await queryPostBySlug({ slug })
+  const url = '/blogs/' + slug
+  const blogs = await queryPostBySlug({ slug })
 
-  if (!news) return <PayloadRedirects url={url} />
+  if (!blogs) return <PayloadRedirects url={url} />
 
   return (
     <article className="pt-16 pb-16">
@@ -57,15 +59,15 @@ export default async function Post({ params: paramsPromise }: Args) {
 
       {draft && <LivePreviewListener />}
 
-      <PostHero post={news} />
+      <PostHero post={blogs} />
 
       <div className="flex flex-col items-center gap-4 pt-8">
         <div className="container">
-          <RichText className="max-w-[48rem] mx-auto" data={news.content} enableGutter={false} />
-          {news?.relatedPosts && news.relatedPosts.length > 0 && (
-            <RelatedPosts
+          <RichText className="max-w-[48rem] mx-auto" data={blogs.content} enableGutter={false} />
+          {blogs?.relatedPosts && blogs.relatedPosts.length > 0 && (
+            <RelatedBlogs
               className="mt-12 max-w-[52rem] lg:grid lg:grid-cols-subgrid col-start-1 col-span-3 grid-rows-[2fr]"
-              docs={news.relatedPosts.filter((news) => typeof news === 'object')}
+              docs={blogs.relatedPosts.filter((blogs) => typeof blogs === 'object')}
             />
           )}
         </div>
@@ -87,7 +89,7 @@ const queryPostBySlug = cache(async ({ slug }: { slug: string }) => {
   const payload = await getPayload({ config: configPromise })
 
   const result = await payload.find({
-    collection: 'news',
+    collection: 'blogs',
     draft,
     limit: 1,
     overrideAccess: draft,
