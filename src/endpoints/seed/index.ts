@@ -227,46 +227,11 @@ export const seed = async ({
     data: post1({ heroImage: image1Doc, blockImage: image2Doc, author: demoAuthor }),
   })
 
-  // const post2Doc = await payload.create({
-  //   collection: 'news',
-  //   depth: 0,
-  //   context: {
-  //     disableRevalidate: true,
-  //   },
-  //   data: post2({ heroImage: image2Doc, blockImage: image3Doc, author: demoAuthor }),
-  // })
 
-  // const post3Doc = await payload.create({
-  //   collection: 'news',
-  //   depth: 0,
-  //   context: {
-  //     disableRevalidate: true,
-  //   },
-  //   data: post3({ heroImage: image3Doc, blockImage: image1Doc, author: demoAuthor }),
-  // })
+  
 
   // update each post with related posts
-  // await payload.update({
-  //   id: post1Doc.id,
-  //   collection: 'news',
-  //   data: {
-  //     relatedPosts: [post2Doc.id, post3Doc.id],
-  //   },
-  // })
-  // await payload.update({
-  //   id: post2Doc.id,
-  //   collection: 'news',
-  //   data: {
-  //     relatedPosts: [post1Doc.id, post3Doc.id],
-  //   },
-  // })
-  // await payload.update({
-  //   id: post3Doc.id,
-  //   collection: 'news',
-  //   data: {
-  //     relatedPosts: [post1Doc.id, post2Doc.id],
-  //   },
-  // })
+
 
   payload.logger.info(`— Seeding contact form...`)
 
