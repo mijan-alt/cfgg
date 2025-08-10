@@ -3,7 +3,7 @@
 import { ArrowRight, ArrowLeft } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { CMSLink } from '@/components/Link'
-import { Page, Post } from '@/payload-types'
+import { Page } from '@/payload-types'
 import { useRef } from 'react'
 import { Media } from '@/components/Media'
 import { Carousel1 } from '@/payload-types'
