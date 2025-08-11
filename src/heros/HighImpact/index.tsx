@@ -21,7 +21,7 @@ export const HighImpactHero: React.FC<Page['hero']> = ({ links, media, richText 
       data-theme="dark"
     >
       {/* Squares pattern - lowest layer */}
-      <div className="absolute inset-0 -z-10 opacity-20">
+      <div className="absolute inset-0 -z-[15] opacity-20">
         <Squares
           speed={0.5}
           squareSize={40}
@@ -37,7 +37,7 @@ export const HighImpactHero: React.FC<Page['hero']> = ({ links, media, richText 
       )}
 
       {/* Dark overlay */}
-      <div className="absolute inset-0 bg-black/80 z-0"></div>
+      <div className="absolute inset-0 bg-black/70 z-0"></div>
 
       {/* Hero content */}
       <div className="container mb-8 z-10 relative flex items-center justify-center">

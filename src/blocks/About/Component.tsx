@@ -30,7 +30,6 @@ export const About: React.FC<AboutBlock> = ({
           {/* Heading */}
           <div className="flex flex-col gap-7">
             <h1 className="text-4xl font-semibold lg:text-7xl">{heading}</h1>
-
             <AnimatedContent
               distance={100}
               direction="vertical"
