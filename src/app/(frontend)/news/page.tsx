@@ -7,7 +7,7 @@ import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import React from 'react'
 import PageClient from './page.client'
-
+import { SectionHero } from '@/components/sections/SectionHero'
 export const dynamic = 'force-static'
 export const revalidate = 600
 
@@ -31,32 +31,36 @@ export default async function Page() {
   console.log('docs', posts.docs)
 
   return (
-    <div className="pt-24 pb-24">
-      <div className="container mb-16">
-        <div className="prose  max-w-none">
-          <h1>Posts</h1>
-        </div>
-      </div>
+    <>
+      <SectionHero backgroundImage="/assets/donate.png" title="News" slug="news" />
 
-      <div className="container mb-8">
-        {/* <PageRange
+      <div className="pt-24 pb-24">
+        {/* <div className="container mb-16">
+          <div className="prose  max-w-none">
+            <h1>Posts</h1>
+          </div>
+        </div> */}
+
+        <div className="container mb-8">
+          {/* <PageRange
         
           currentPage={posts.page}
           limit={12}
           totalDocs={posts.totalDocs}
         /> */}
-      </div>
+        </div>
 
-      <div className=" mx-auto px-4 max-w-7xl">
-        <NewsArchive posts={posts.docs} />
-      </div>
+        <div className=" mx-auto px-4 max-w-7xl">
+          <NewsArchive posts={posts.docs} />
+        </div>
 
-      <div className="container">
-        {posts.totalPages > 1 && posts.page && (
-          <Pagination page={posts.page} totalPages={posts.totalPages} />
-        )}
+        <div className="container">
+          {posts.totalPages > 1 && posts.page && (
+            <Pagination page={posts.page} totalPages={posts.totalPages} />
+          )}
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 

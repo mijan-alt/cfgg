@@ -17,7 +17,7 @@ export const HighImpactHero: React.FC<Page['hero']> = ({ links, media, richText 
 
   return (
     <div
-      className="relative flex items-center justify-center text-white py-12 min-h-[80vh]"
+      className="relative flex items-center justify-center text-white py-12 h-[100vh]"
       data-theme="dark"
     >
       {/* Squares pattern - lowest layer */}

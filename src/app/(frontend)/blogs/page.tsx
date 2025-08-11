@@ -8,7 +8,9 @@ import { getPayload } from 'payload'
 import React from 'react'
 import PageClient from './page.client'
 import { BlogArchive } from '@/components/BlogsArchive'
-
+import { HomeIcon } from 'lucide-react'
+import Link from 'next/link'
+import { SectionHero } from '@/components/sections/SectionHero'
 export const dynamic = 'force-static'
 export const revalidate = 600
 
@@ -32,7 +34,13 @@ export default async function Page() {
   console.log('docs', posts.docs)
 
   return (
-    <div className="pt-24 pb-24">
+    <>
+    <SectionHero
+        backgroundImage="/assets/donate.png"
+        title="Opinions"
+        slug="blogs"
+      />
+      <div className="pt-24 pb-24">
       <div className="container mb-16">
         <div className="prose  max-w-none">
           <h1>Blogs</h1>
@@ -58,6 +66,8 @@ export default async function Page() {
         )}
       </div>
     </div>
+    </>
+  
   )
 }
 
