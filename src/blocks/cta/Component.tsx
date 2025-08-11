@@ -41,7 +41,7 @@ export const CTA2Block: React.FC<Cta2> = ({
             <SplitText
               text={heading}
               className="text-4xl md:text-5xl font-bold"
-              splitType="chars" // animates letter by letter
+              splitType="words" // animates letter by letter
               delay={50}         // ms between each letter
               duration={0.6}
               ease="power3.out"
