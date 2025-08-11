@@ -44,7 +44,7 @@
     "next-env.d.ts",
     "next.config.js",
     "next-sitemap.config.cjs"
-  ],
+, "src/components/Animations/AnimatedContent.tsx"  ],
   "exclude": [
     "node_modules"
   ],

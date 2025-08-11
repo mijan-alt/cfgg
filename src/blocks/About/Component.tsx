@@ -6,6 +6,9 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Media } from '@/components/Media'
 import { AboutBlock } from '@/payload-types'
+import AnimatedContent from '../../components/Animations/AnimatedContent'
+import SplitText from '@/components/Animations/SplitText'
+import GlareHover from '@/components/Animations/GlareCover'
 
 const iconMap = {
   building: Building,
@@ -27,17 +30,42 @@ export const About: React.FC<AboutBlock> = ({
           {/* Heading */}
           <div className="flex flex-col gap-7">
             <h1 className="text-4xl font-semibold lg:text-7xl">{heading}</h1>
-            <p className="max-w-xl text-lg text-muted-foreground">{subheading}</p>
+
+            <AnimatedContent
+              distance={100}
+              direction="vertical"
+              reverse={false}
+              duration={1.0}
+              ease="power3.out"
+              initialOpacity={0}
+              animateOpacity
+              scale={1}
+              threshold={0.1}
+              delay={0.1}
+            >
+              <p className="max-w-xl text-lg text-muted-foreground">{subheading}</p>
+            </AnimatedContent>
           </div>
 
           {/* Image and Mission Card */}
           <div className="grid gap-2 md:gap-6 md:grid-cols-2">
-            <Media
-              resource={image}
-              className="w-full  rounded-2xl object-cover overflow-hidden"
-              imgClassName="rounded-2xl "
-            />
-
+            <GlareHover
+              width="100%"
+              height="100%"
+              glareColor="#ffffff"
+              glareOpacity={0.3}
+              glareSize={200}
+              glareAngle={-45}
+              borderRadius="1rem"
+              className="rounded-2xl overflow-hidden"
+              style={{ border: 'none' }}
+            >
+              <Media
+                resource={image}
+                className="w-full h-full rounded-2xl object-cover overflow-hidden"
+                imgClassName="rounded-2xl"
+              />
+            </GlareHover>
             <Card className="bg-[#dfe0df] border-0 rounded-2xl">
               <CardContent className="flex flex-col justify-between gap-10 p-10 h-full">
                 <Badge
@@ -55,31 +83,60 @@ export const About: React.FC<AboutBlock> = ({
           <div className="flex flex-col gap-6 md:gap-20">
             <div className="max-w-xl">
               <h2 className="mb-2.5 text-3xl font-semibold md:text-5xl">What We Focus On</h2>
-              <p className="text-muted-foreground">
-                These pillars guide our work in promoting good governance and civic responsibility.
-              </p>
+              <AnimatedContent
+                distance={80}
+                direction="vertical"
+                reverse={false}
+                duration={1.0}
+                ease="power3.out"
+                initialOpacity={0}
+                animateOpacity
+                scale={1}
+                threshold={0.1}
+                delay={0}
+              >
+                <p className="text-muted-foreground">
+                  These pillars guide our work in promoting good governance and civic
+                  responsibility.
+                </p>
+              </AnimatedContent>
             </div>
 
             <div className="grid gap-10 md:grid-cols-3">
               {features?.map((feature, idx) => {
                 const Icon = iconMap[feature.icon]
                 return (
-                  <Card key={idx} className="border-0 shadow-none bg-transparent">
-                    <CardContent className="flex flex-col p-0">
-                      <div className="mb-5 flex size-12 items-center justify-center rounded-2xl bg-accent text-primary">
-                        {Icon && <Icon className="size-5" />}
-                      </div>
-                      <h3 className="mt-2 mb-3 text-lg font-semibold">{feature.title}</h3>
-                      <p className="text-muted-foreground">{feature.description}</p>
-                    </CardContent>
-                  </Card>
+                  <AnimatedContent
+                    key={idx}
+                    distance={50}
+                    direction="vertical"
+                    duration={0.6}
+                    ease="power3.out"
+                    initialOpacity={0}
+                    animateOpacity
+                    scale={0.95}
+                    delay={idx * 0.15} // stagger
+                  >
+                    <Card className="border-0 shadow-none bg-transparent">
+                      <CardContent className="flex flex-col p-0">
+                        <div className="mb-5 flex size-12 items-center justify-center rounded-2xl bg-accent text-primary">
+                          {Icon && <Icon className="size-5" />}
+                        </div>
+                        <h3 className="mt-2 mb-3 text-lg font-semibold">{feature.title}</h3>
+                        <p className="text-muted-foreground">{feature.description}</p>
+                      </CardContent>
+                    </Card>
+                  </AnimatedContent>
                 )
               })}
             </div>
           </div>
           <div className="grid gap-10 md:grid-cols-2">
             <div>
-              <Badge variant="secondary" className="mb-10 text-xs font-medium bg-[#a88c66] text-white">
+              <Badge
+                variant="secondary"
+                className="mb-10 text-xs font-medium bg-[#a88c66] text-white"
+              >
                 GET INVOLVED
               </Badge>
               <h2 className="mb-2.5 text-3xl font-semibold md:text-5xl ">

@@ -3,10 +3,11 @@
 import { ArrowRight, ArrowLeft } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { CMSLink } from '@/components/Link'
-import { Page } from '@/payload-types'
 import { useRef } from 'react'
 import { Media } from '@/components/Media'
 import { Carousel1 } from '@/payload-types'
+import AnimatedContent from '@/components/Animations/AnimatedContent'
+import GlareHover from '@/components/Animations/GlareCover'
 
 export default function Carousel1Block({ heading, intro, caseStudies }: Carousel1) {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -21,13 +22,24 @@ export default function Carousel1Block({ heading, intro, caseStudies }: Carousel
   }
 
   return (
-    <section className="">
+    <section>
       <div className="container">
         <div className="mb-14 flex items-end justify-between">
-          <div className="flex flex-col gap-4">
-            <h2 className="text-3xl font-medium md:text-4xl lg:text-5xl">{heading}</h2>
-            <p className="max-w-lg text-muted-foreground">{intro}</p>
-          </div>
+          <AnimatedContent
+            distance={80}
+            direction="vertical"
+            duration={1.0}
+            ease="power3.out"
+            initialOpacity={0}
+            animateOpacity
+            threshold={0.1}
+          >
+            <div className="flex flex-col gap-4">
+              <h2 className="text-3xl font-medium md:text-4xl lg:text-5xl">{heading}</h2>
+              <p className="max-w-lg text-muted-foreground">{intro}</p>
+            </div>
+          </AnimatedContent>
+
           <div className="hidden gap-2 md:flex">
             <Button variant="ghost" size="icon" onClick={() => scroll('left')}>
               <ArrowLeft className="size-5 text-primary" />
@@ -37,6 +49,7 @@ export default function Carousel1Block({ heading, intro, caseStudies }: Carousel
             </Button>
           </div>
         </div>
+
         <div className="overflow-x-auto scrollbar-hide" ref={containerRef}>
           <div className="flex gap-5">
             {caseStudies?.map((study, i) => (
@@ -45,11 +58,14 @@ export default function Carousel1Block({ heading, intro, caseStudies }: Carousel
                 {...study.link}
                 className="group relative w-[320px] h-[400px] lg:w-[360px] shrink-0 rounded-xl overflow-hidden border bg-card shadow-sm hover:shadow-md transition-shadow"
               >
-                <Media
-                  resource={study.image}
-                  className="absolute h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                  imgClassName="h-full w-full"
-                />
+           
+                  <Media
+                    resource={study.image}
+                    className="absolute h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    imgClassName="h-full w-full"
+                  />
+              
+
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 z-10" />
                 <div className="absolute bottom-0 left-0 z-20 p-6 text-white">
                   <h3 className="mb-2 text-xl font-semibold line-clamp-2">{study.title}</h3>

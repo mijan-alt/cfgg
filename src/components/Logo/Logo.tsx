@@ -17,12 +17,10 @@ export const Logo = (props: Props) => {
     /* eslint-disable @next/next/no-img-element */
     <img
       alt="cfgglogo"
-      width={193}
-      height={34}
       loading={loading}
       fetchPriority={priority}
       decoding="async"
-      className={clsx(' w-full h-[60px]', className)}
+      className={clsx(' h-[60px]', className)}
       src="/assets/cfgglogo.png"
     />
   )
