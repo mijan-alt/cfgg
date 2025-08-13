@@ -18,6 +18,11 @@ import { Donations } from './collections/Donations'
 import Members from './collections/Members'
 import { News } from './collections/News'
 import { Blogs } from './collections/Blogs'
+import { resendAdapter } from '@payloadcms/email-resend'
+import { nodemailerAdapter } from '@payloadcms/email-nodemailer'
+import { formBuilderPlugin } from '@payloadcms/plugin-form-builder'
+
+
 
 
 
@@ -105,4 +110,23 @@ export default buildConfig({
     },
     tasks: [],
   },
+  //   email: resendAdapter({
+  //   defaultFromAddress: 'dev@payloadcms.com',
+  //   defaultFromName: 'Payload CMS',
+  //   apiKey: process.env.RESEND_API_KEY || '',
+  // }),
+
+email: nodemailerAdapter({
+    defaultFromAddress: 'mijanigoni@gmail.com',
+    defaultFromName: 'Mijan Richard',
+    // Nodemailer transportOptions
+    transportOptions: {
+      host: process.env.SMTP_HOST,
+      port: 587,
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
+      },  
+    },
+  }),
 })
