@@ -108,7 +108,7 @@ export default buildConfig({
   },
 
    email: resendAdapter({
-    defaultFromAddress: 'mijanigoni@gmail.com',
+    defaultFromAddress: 'hello@websitevantage.com',
     defaultFromName: 'Mijan Igoni',
     apiKey: process.env.RESEND_API_KEY || '',
   })
