@@ -20,8 +20,8 @@ import { News } from './collections/News'
 import { Blogs } from './collections/Blogs'
 import { resendAdapter } from '@payloadcms/email-resend'
 import { nodemailerAdapter } from '@payloadcms/email-nodemailer'
+import nodemailer from 'nodemailer'
 import nodemailerSendgrid from 'nodemailer-sendgrid'
-import { formBuilderPlugin } from '@payloadcms/plugin-form-builder'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -106,31 +106,10 @@ export default buildConfig({
     },
     tasks: [],
   },
-  //   email: resendAdapter({
-  //   defaultFromAddress: 'dev@payloadcms.com',
-  //   defaultFromName: 'Payload CMS',
-  //   apiKey: process.env.RESEND_API_KEY || '',
-  // }),
 
-  // email: nodemailerAdapter({
-  //     defaultFromAddress: 'mijanigoni@gmail.com',
-  //     defaultFromName: 'Mijan Richard',
-  //     // Nodemailer transportOptions
-  //     transportOptions: {
-  //       host: process.env.SMTP_HOST,
-  //       port: 587,
-  //       auth: {
-  //         user: process.env.SMTP_USER,
-  //         pass: process.env.SMTP_PASS,
-  //       },
-  //     },
-  //   }),
-
-  email: nodemailerAdapter({
+   email: resendAdapter({
     defaultFromAddress: 'mijanigoni@gmail.com',
     defaultFromName: 'Mijan Igoni',
-    transportOptions: nodemailerSendgrid({
-      apiKey: process.env.SENDGRID_API_KEY!,
-    }),
-  }),
+    apiKey: process.env.RESEND_API_KEY || '',
+  })
 })

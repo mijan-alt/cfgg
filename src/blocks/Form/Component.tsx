@@ -92,6 +92,8 @@ export const FormBlock: React.FC<
           setIsLoading(false)
           setHasSubmitted(true)
 
+
+      
           
 
           if (confirmationType === 'redirect' && redirect) {
